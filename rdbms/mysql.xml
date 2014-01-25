@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<!DOCTYPE db_action SYSTEM "db_action.dtd">
+<!-- @author:     $Author: rhickers $ -->
+<!-- @version:    $Revision: 1110 $ -->
+<!-- @copyright:	(c) 2001, 2002, 2003 ars Cognita, Inc. -->
+<!-- 	
+  This software is licensed specifically by ars Cognita, Inc. It may not
+	be used, reused, resold, or copied in any way without specific
+	written permission from ars Cognita, Inc.
+-->
+<vendor name="mysql" version="" >
+
+	<action id="think">
+		<comment>
+			think! Performs the actual SONM query, placing the results in the decision table.
+			
+			@param  integer %QUERYID% Query ID to query against
+    </comment>
+		<sql>
+			insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol
+			</sql>
+		<sql>
+			insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought
+			</sql>
+		<sql>
+			delete from ThinkWork where query = %QUERYID%
+			</sql>
+	</action>
+  
+  <action id="test removeable TsNeurons">
+		<comment> 
+			Count the number of tsNeurons that would be removed for a thought ID and symbol.
+			
+			@param integer %THOUGHTID% Thought ID
+			@param integer %NULLTHOUGHTID% Thought ID that will return an empty row
+			@param string %SYMBOL% Symbol
+		</comment>
+		<sql>
+			select symbol from TsNeuron 
+       		 where (thought = %THOUGHTID% or %THOUGHTID% = %NULLTHOUGHTID% )
+       		 and (symbol = '%SYMBOL%' or length(ltrim('%SYMBOL%')) = 0
+		</sql>
+	</action>
+	
+  <action id="remove tsNeurons">
+		<comment>
+			Delete tsNeurons from the brain by thought ID and symbol.
+			
+			@param integer %THOUGHTID% Thought ID
+			@param integer %NULLTHOUGHTID% Thought ID that will return an empty row
+			@param string %SYMBOL% Symbol
+			</comment>
+		<sql>
+			delete from tsneuron 
+				where (thought = %THOUGHTID% or %THOUGHTID% = %NULLTHOUGHTID% )
+				and (symbol = '%SYMBOL%' or length(ltrim('%SYMBOL%')) = 0)
+			</sql>
+		</action>
+	
+	<action id="reinforce memory">
+		<comment> 
+			Reinforce existing TsNeurons given a decision.
+			
+			@param integer %REINFORCEMENT% Positive reinforcement (from Fundamentals)
+			@param integer %QUERYID% 	
+			
+		
+			update TsNeuron
+            set dominance = dominance + %REINFORCEMENT%,
+               interacted = now()
+            from Decision, Stimulus
+            where TsNeuron.thought = Decision.thought
+               and TsNeuron.symbol = Stimulus.stimulus
+               and Decision.query = Stimulus.query
+               and Decision.query =  %QUERYID%
+               and Decision.thought = %THOUGHTID%
+			</comment>
+                <sql>
+            insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+                select -3,Decision.thought,stimulus,spatiality,dominance + %REINFORCEMENT%, enabled,now()
+                from TsNeuron,Decision,Stimulus
+            where TsNeuron.thought = Decision.thought
+               and TsNeuron.symbol = Stimulus.stimulus
+               and Decision.query = Stimulus.query
+               and Decision.query =  %QUERYID%
+               and Decision.thought = %THOUGHTID%
+                        </sql>
+                <sql>
+             replace into TsNeuron (thought,symbol,spatiality,dominance,enabled,interacted)
+                                select thought,symbol,spatiality,dominance,enabled,now()
+                                from TsnModDom where query = -3
+                        </sql>
+                <sql>
+            delete from TsnModDom where query = -3
+                        </sql>
+		</action>
+	
+   <action id="weaken unused memories">
+		<comment> 
+			Weaken neurons of all un-reinforced decisions.
+			</comment>
+		<sql>
+            insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+                select -2,Decision.thought,stimulus,spatiality,dominance-fvalue,enabled,now()
+                from TsNeuron,Fundamentals,Decision,Stimulus
+                 where Decision.query = Stimulus.query
+                 and (ltrim(Decision.status) = '' or Decision.status is null)
+                 and TsNeuron.thought = Decision.thought
+                 and TsNeuron.symbol = Stimulus.stimulus
+                 and fname = 'tsneuron_weakening'
+			</sql>
+		<sql>
+             replace into TsNeuron (thought,symbol,spatiality,dominance,enabled,interacted)
+				select thought,symbol,spatiality,dominance,enabled,now()
+				from TsnModDom where query = -2
+			</sql>
+		<sql>
+            delete from TsnModDom where query = -2
+			</sql>
+		</action>
+
+  <action id="weaken memories for a query">
+		<comment>
+			Weaken neurons of unused memories related to a specific query.
+			
+			@param integer %QUERYID% ID of relevant query
+			</comment>
+		<sql>
+            insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+                    select %QUERYID%,TsNeuron.thought,stimulus,spatiality,dominance-fvalue,enabled,now()
+                    from TsNeuron,Fundamentals,Decision,Stimulus
+                     where Decision.query = Stimulus.query
+                     and Decision.query = %QUERYID%
+                     and (ltrim(Decision.status) = '' or Decision.status is null)
+                     and TsNeuron.thought = Decision.thought
+                     and TsNeuron.symbol = Stimulus.stimulus
+                                 and fname = 'tsneuron_weakening'
+			</sql>
+		<sql>
+             replace into TsNeuron (thought,symbol,spatiality,dominance,enabled,interacted)
+                     select thought,symbol,spatiality,dominance,enabled,now()
+                    from TsnModDom where query = %QUERYID%
+			</sql>
+		<sql>
+            delete from TsnModDom where query = %QUERYID%
+			</sql>
+		</action>
+
+  <action id="weaken memories for a thought">
+		<comment>
+			Weaken neurons of a memory related to a specific thought.
+			
+			@param integer %QUERYID% ID of relevant query
+			@param integer %THOUGHTID% ID of relevant thought
+			</comment>
+		<sql>
+			insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+                                select %QUERYID%,%THOUGHTID%,stimulus,spatiality,dominance-fvalue,enabled,now()
+                                from TsNeuron,Fundamentals,Decision,Stimulus
+                                 where Decision.query = Stimulus.query
+                                 and Decision.thought = %THOUGHTID%
+                                 and Decision.status = 'REJECTED'
+                                 and TsNeuron.thought = Decision.thought
+                                 and TsNeuron.symbol = Stimulus.stimulus
+                                 and Decision.query = %QUERYID%
+                                 and fname = 'tsneuron_weakening'
+			</sql>
+		<sql>
+             replace into TsNeuron (thought,symbol,spatiality,dominance,enabled,interacted)
+                     select thought,symbol,spatiality,dominance,enabled,now()
+                    from TsnModDom where query = %QUERYID% and thought = %THOUGHTID%
+			</sql>
+		<sql>
+			delete from TsnModDom where query = %QUERYID% and thought = %THOUGHTID%
+			</sql>
+		</action>
+ 
+  <action id="clear empty decisions">
+		<comment>
+			Delete all unanswered decisions .
+			</comment>
+		<sql>
+                    insert into RmDecision (query,thought,strength,visited,status)
+                           select queryId,thought,strength,visited,'REMOVE'
+                             from Query, Decision
+                            where queryId = query
+                              and Query.status like 'CLOSED%'
+                              and (ltrim(Decision.status) = '' or Decision.status is null)
+			</sql>
+		<sql>
+                   replace into Decision (query,thought,strength,visited,status)
+                           select query,thought,strength,visited,status
+                             from RmDecision
+                            where RmDecision.status = 'REMOVE'
+			</sql>
+		<sql>         
+			delete from RmDecision where status = 'REMOVE'
+			</sql>
+		</action>
+ 
+  <action id="clear decisions">
+		<comment>
+			Delete all stale decisions .
+			</comment>
+		<sql>
+                    insert into RmDecision (query,thought,strength,visited,status)
+                           select queryId,thought,strength,visited,'REMOVEs'
+                             from Query, Decision
+                            where queryId = query
+                              and Query.status like 'CLOSED%'
+                   
+			</sql>
+		<sql>
+			replace into Decision (query,thought,strength,visited,status)
+                           select query,thought,strength,visited,status 
+                             from RmDecision
+                            where RmDecision.status = 'REMOVEs'
+			</sql>
+		<sql>
+			delete from Decision where status = 'REMOVEs'
+			</sql>
+		<sql>
+			delete from RmDecision where status = 'REMOVEs'
+			</sql>
+		</action>
+
+  <action id="clear stimuli">
+		<comment>
+			Delete stale stimuli.
+			</comment>
+		<sql>
+                    insert into RmStimulus (query,stimulus, reality)
+                           select queryId,stimulus,'REMOVEsTALE' 
+                             from Query, Stimulus
+                            where queryId = query
+                              and Query.status like 'CLOSED%'
+			</sql>
+		<sql>
+                    replace into Stimulus (query, stimulus,reality)
+                           select query,stimulus,reality
+                             from RmStimulus
+                            where reality = 'REMOVEsTALE'
+			</sql>
+		<sql>
+			delete from Stimulus where reality = 'REMOVEsTALE'
+			</sql>
+		<sql>
+			delete from RmStimulus where reality = 'REMOVEsTALE'
+			</sql>
+		</action>
+
+  <action id="update query states by decision">
+		<comment>
+			Update statuses on queries .
+			</comment>
+		<sql>
+			update Query set status = '%QSTATUS%' where 1 = 0
+			</sql>
+			<!--sql>
+	      update query
+	        set status = '%QSTATUS%'
+	        from decision d
+	        where d.query = query.queryid
+	        and d.status = '%DSTATUS%'
+	        and query.status not like 'CLOSED%'
+	        and created &lt; current_timestamp - interval '%DELAY% minutes';
+			</sql-->
+		</action>
+	
+  <action id="update query states by query">
+		<comment>
+			Update statuses on queries.
+			
+			@param string %NEWSTATUS% Status to change TO
+			@param string %OLDSTATUS% Status to change FROM
+			@param integer %DELAY% Minimum age of query
+			</comment>
+		<sql>
+		      update Query
+		        set status = '%NEWSTATUS%'
+		        where status = '%OLDSTATUS%'
+			and created &lt; now() - interval %DELAY% minute
+			</sql>
+		</action>
+
+  <action id="insert query history">
+		<comment> Insert queries linked to decisions into the query history table.</comment>
+		<sql>
+      insert into Query_History
+        (query, created, closed, thought, strength, query_status, decision_status)
+        select q.queryid, q.created, now(), d.thought, d.strength, q.status, d.status
+          from Query q left outer join Decision d
+          on q.queryid = d.query
+          where q.status like 'CLOSED%'
+		</sql>
+	</action>
+
+	<action id="show missing symbols">
+		<comment> Add new symbols to a thought given a decision. </comment>
+		<sql>
+			select Stimulus.stimulus 
+			  from Stimulus left outer join Symbol 
+			              on Symbol.symbol = Stimulus.stimulus,
+			       Decision
+                         where Decision.query = Stimulus.query
+			   and Decision.thought = %THOUGHTID%
+			   and Decision.query = %QUERYID%
+			   and Symbol.symbol is null
+		</sql>
+	</action>
+
+	<action id="show missing neurons">
+		<comment> Add new neurons to a thought given a decision. </comment>
+		<sql>
+                        select Stimulus.stimulus 
+                          from Stimulus left outer join TsNeuron
+                                      on TsNeuron.symbol = Stimulus.stimulus
+                                     and TsNeuron.thought = %THOUGHTID%,
+                               Decision
+                         where Decision.query = Stimulus.query
+                           and Decision.thought = %THOUGHTID%
+                           and Decision.query = %QUERYID%
+                           and TsNeuron.symbol is null
+				</sql>
+			</action>
+
+	<action id="fetch answers">
+		<comment> fetch a list of sorted decisions given a queryId. </comment>
+		<sql>
+			select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status  , Thought.detail, Decision.strength, Thought.map_id 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc
+		</sql>
+	</action>
+
+	<action id="calculate symbol variance">
+		<comment>Return the statistical variance of tsncount.  Variance is the square of Standard Deviation.</comment>
+		<sql>
+			select pow(stddev(tsncount),2) from Symbol;
+		</sql>
+	</action>
+
+	<action id="calculate symbol deviation">
+		<comment> Calculate the standard deviation of the symbol frequency. </comment>
+		<sql>
+			select stddev(tsnCount) from Symbol
+		</sql>
+	</action>
+	i
+	<action id="update neural counts">
+		<comment> Update the neuron counter for each symbol. </comment>
+		<sql>
+			insert into UpdSymbol (symbol,interacted,reality,tsNcount, noiseWord)
+			       select s.symbol,s.interacted,s.reality,count(*),noiseWord
+                                 from Symbol s, TsNeuron
+				where s.symbol = TsNeuron.symbol
+				group by s.symbol,s.interacted,s.reality,noiseWord
+			</sql>
+		<sql>
+			replace into Symbol select * from UpdSymbol
+			</sql>
+		<sql>
+			delete from UpdSymbol
+			</sql>
+		</action>
+	
+	<action id="filter noise">
+		<comment> Update the noiseword filter. </comment>
+		<sql>
+			update Symbol set noiseWord = 
+				case when tsnCount > %THRESHOLDCOUNT% then 2 else 3 end
+				where (noiseWord = 1 and tsnCount > %THRESHOLDCOUNT%)
+				or (noiseWord = 0 and tsnCount &lt;= %THRESHOLDCOUNT%)
+				or noiseWord is null
+			</sql>
+		</action>
+	
+	<action id="filter neural noise">
+		<comment> Update tsNeurons from the noise filter. </comment>
+		<sql>
+                        insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+                               select -20,t.thought,t.symbol,t.spatiality,t.dominance,s.noiseWord-2,t.interacted
+                                 from TsNeuron t, Symbol s
+                                where t.symbol = s.symbol
+                                  and s.noiseWord > 1
+			</sql>
+		<sql>
+                        replace into TsNeuron (thought,symbol,spatiality,dominance,enabled,interacted)
+                                select thought,symbol,spatiality,dominance,enabled,interacted
+                                  from TsnModDom
+                                 where query = -20
+			</sql>
+		<sql>
+                        delete from TsnModDom where query = -20
+			</sql>
+		<sql>
+			update TsNeuron set enabled = symbol.noiseWord - 2
+				from Symbol where TsNeuron.symbol = Symbol.symbol
+				and Symbol.noiseWord > 1
+			</sql>
+		</action>
+	
+	<action id="renormalize noise filter">
+		<comment>
+			Prepare noise filter for the next run. This should be done after every filter run.
+			</comment>
+		<sql>
+			insert into TsnModDom (query,thought,symbol,spatiality,dominance,enabled,interacted)
+			       select -20,t.thought,t.symbol,t.spatiality,t.dominance,s.noiseWord-2,interacted
+			         from TsNeuron t, Symbol s
+				where t.symbol = s.symbol
+				  and s.noiseWord > 1
+			</sql>
+		<sql>
+			update Symbol set noiseWord = noiseWord - 2 where noiseWord > 1
+			</sql>
+		</action>
+	
+	<action id="check agent authorization">
+		<comment> 
+			Check to see if an agent (user) is authorized to perform
+			the selected action.
+			</comment>
+		<sql>
+			select * from Agent a, AgentRole r
+				where a.userid = '%USERID%'
+				and password = '%PASSWORD%'
+				and ( role = '%ROLE%' or role = 'admin' )
+			</sql>
+		</action>
+	</vendor>
+

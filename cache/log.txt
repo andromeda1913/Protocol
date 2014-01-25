@@ -1,0 +1,4285 @@
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388870794)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2033)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (DONT)2014-01-05
+<<< setSymbol (DONT)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (DONT)2014-01-05
+Added stimulus 'DONT' to query 20332014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (CAST)2014-01-05
+<<< setSymbol (CAST)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (CAST)2014-01-05
+Added stimulus 'CAST' to query 20332014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2033
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2033'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2033)2014-01-05
+>>> answers (2033)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2033
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388870794)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2033)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (DONT)2014-01-05
+<<< setSymbol (DONT)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (DONT)2014-01-05
+Added stimulus 'DONT' to query 20332014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (CAST)2014-01-05
+<<< setSymbol (CAST)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (CAST)2014-01-05
+Added stimulus 'CAST' to query 20332014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2033
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2033'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2033)2014-01-05
+>>> answers (2033)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2033'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2033
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388871054)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2035)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (C)2014-01-05
+<<< setSymbol (C)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (C)2014-01-05
+Added stimulus 'C' to query 20352014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2035'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2035
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2035'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2035'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2035'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2035)2014-01-05
+>>> answers (2035)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2035'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2035
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388871070)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2036)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (DONT)2014-01-05
+<<< setSymbol (DONT)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (DONT)2014-01-05
+Added stimulus 'DONT' to query 20362014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (CAST)2014-01-05
+<<< setSymbol (CAST)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (CAST)2014-01-05
+Added stimulus 'CAST' to query 20362014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2036
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2036'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2036)2014-01-05
+>>> answers (2036)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2036
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388871070)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2036)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (DONT)2014-01-05
+<<< setSymbol (DONT)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (DONT)2014-01-05
+Added stimulus 'DONT' to query 20362014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (CAST)2014-01-05
+<<< setSymbol (CAST)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (CAST)2014-01-05
+Added stimulus 'CAST' to query 20362014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2036
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2036'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2036)2014-01-05
+>>> answers (2036)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2036'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2036
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388871125)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2038)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20382014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20382014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol ()2014-01-05
+<<< setSymbol ()2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+Attempt to insert empty stimulus2014-01-05
+<<< insertStimulus ()2014-01-05
+Error inserting stimulus ''2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20382014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2038
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2038'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2038)2014-01-05
+>>> answers (2038)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2038
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388871125)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2038)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20382014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20382014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol ()2014-01-05
+<<< setSymbol ()2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+Attempt to insert empty stimulus2014-01-05
+<<< insertStimulus ()2014-01-05
+Error inserting stimulus ''2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20382014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2038
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2038'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2038)2014-01-05
+>>> answers (2038)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2038'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2038
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> readThoughtFull (113)2014-01-05
+Caching recordset to /home/pashkov/mind4cloud.com/www/opensource/cache/2014-01-05
+setSummary (JOOMLA RENDER)2014-01-05
+_setDetail2014-01-05
+>>> setInteracted (2013-07-05 23:27:47)2014-01-05
+<<< setInteracted (2013-07-05 23:27:47)2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+<<< readThoughtFull (113)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872232)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2040)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20402014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20402014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20402014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2040
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2040'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2040)2014-01-05
+>>> answers (2040)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2040
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872232)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2040)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20402014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20402014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20402014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2040
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2040'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2040)2014-01-05
+>>> answers (2040)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2040'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2040
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> readThoughtFull (113)2014-01-05
+Caching recordset to /home/pashkov/mind4cloud.com/www/opensource/cache/2014-01-05
+setSummary (JOOMLA RENDER)2014-01-05
+_setDetail2014-01-05
+>>> setInteracted (2013-07-05 23:27:47)2014-01-05
+<<< setInteracted (2013-07-05 23:27:47)2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+<<< readThoughtFull (113)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872520)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2042)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20422014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20422014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol ()2014-01-05
+<<< setSymbol ()2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+Attempt to insert empty stimulus2014-01-05
+<<< insertStimulus ()2014-01-05
+Error inserting stimulus ''2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20422014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2042'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2042
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2042'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2042'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2042'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2042)2014-01-05
+>>> answers (2042)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2042'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2042
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872521)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (2043)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (PHP)2014-01-05
+<<< setSymbol (PHP)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (PHP)2014-01-05
+Added stimulus 'PHP' to query 20432014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (ECHO)2014-01-05
+<<< setSymbol (ECHO)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (ECHO)2014-01-05
+Added stimulus 'ECHO' to query 20432014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol ()2014-01-05
+<<< setSymbol ()2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+Attempt to insert empty stimulus2014-01-05
+<<< insertStimulus ()2014-01-05
+Error inserting stimulus ''2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (MP3)2014-01-05
+<<< setSymbol (MP3)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (MP3)2014-01-05
+Added stimulus 'MP3' to query 20432014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID%
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '2043'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus LIKE Symbol.symbol
+				and TsNeuron.symbol LIKE  Symbol.symbol 
+				and TsNeuron.enabled != 0 and Stimulus.query = 2043
+				group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '2043'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '2043'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 2043'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (2043)2014-01-05
+>>> answers (2043)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 200)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '2043'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta
+			  from Thought, Decision
+			 where Decision.query = 2043
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 2002014-01-05
+<<< getAction2014-01-05
+<<< answers2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> readThoughtFull (113)2014-01-05
+Caching recordset to /home/pashkov/mind4cloud.com/www/opensource/cache/2014-01-05
+setSummary (JOOMLA RENDER)2014-01-05
+_setDetail2014-01-05
+>>> setInteracted (2013-07-05 23:27:47)2014-01-05
+<<< setInteracted (2013-07-05 23:27:47)2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+<<< readThoughtFull (113)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> learnThought2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setSummary (readfile(PATH."/speak.mp3");)2014-01-05
+_setDetail2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+>>> insertThought2014-01-05
+Summary is 'readfile(PATH."/speak.mp3");'2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+<<< insertThought (541)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning frequency data2014-01-05
+>>> insertSymbol2014-01-05
+Inserting array of symbols2014-01-05
+Inserting array symbol 'READFILE'2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+Inserting array symbol ''2014-01-05
+Ignoring empty array symbol2014-01-05
+Inserting array symbol 'MP3'2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+<<< insertSymbol (2)2014-01-05
+readParam (default_tsneuron_dominance is 100)2014-01-05
+readParam (tsneuron_reinforcement is 10)2014-01-05
+readParam (new_tsneuron_freq_weighting is 0.1)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+<<< insertNeuron (541, 'READFILE')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (PATH)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (PATH)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+<<< insertNeuron (541, 'PATH')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary ()2014-01-05
+Freq is 5, weight param is 0.12014-01-05
+Setting dominance to 1042014-01-05
+setDominance (104)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary ()2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+<<< insertNeuron (541, 'SPEAK')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (MP3)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (MP3)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388872693)2014-01-05
+<<< insertNeuron (541, 'MP3')2014-01-05
+Added tsNeuron2014-01-05
+Returning frequency data2014-01-05
+>>> insertSymbol2014-01-05
+Inserting array of symbols2014-01-05
+Inserting array symbol ''2014-01-05
+Ignoring empty array symbol2014-01-05
+<<< insertSymbol (0)2014-01-05
+readParam (default_tsneuron_dominance is 100)2014-01-05
+readParam (tsneuron_reinforcement is 10)2014-01-05
+readParam (new_tsneuron_freq_weighting is 0.1)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Ignoring existing tsNeuron (541,READFILE)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (PATH)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (PATH)2014-01-05
+Ignoring existing tsNeuron (541,PATH)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary ()2014-01-05
+Freq is 5, weight param is 0.12014-01-05
+Setting dominance to 1042014-01-05
+setDominance (104)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary ()2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Ignoring existing tsNeuron (541,SPEAK)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (MP3)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (541)2014-01-05
+_setSecondary (MP3)2014-01-05
+Ignoring existing tsNeuron (541,MP3)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+<<< learnThought (541)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> learnThought2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setSummary (php echo mp3  header(&#39;Content-Type: audio/mpe)2014-01-05
+_setDetail2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+>>> insertThought2014-01-05
+Summary is 'php echo mp3  header(&#39;Content-Type: audio/mpe'2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873018)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+<<< insertThought (542)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning frequency data2014-01-05
+>>> insertSymbol2014-01-05
+Inserting array of symbols2014-01-05
+Inserting array symbol ''2014-01-05
+Ignoring empty array symbol2014-01-05
+Inserting array symbol 'MPE'2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873018)2014-01-05
+<<< insertSymbol (1)2014-01-05
+readParam (default_tsneuron_dominance is 100)2014-01-05
+readParam (tsneuron_reinforcement is 10)2014-01-05
+readParam (new_tsneuron_freq_weighting is 0.1)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PHP)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PHP)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873018)2014-01-05
+<<< insertNeuron (542, 'PHP')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ECHO)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ECHO)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873018)2014-01-05
+<<< insertNeuron (542, 'ECHO')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MP3)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MP3)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873018)2014-01-05
+<<< insertNeuron (542, 'MP3')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary ()2014-01-05
+Freq is 4, weight param is 0.12014-01-05
+Setting dominance to 1032014-01-05
+setDominance (103)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary ()2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (HEADER)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (HEADER)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'HEADER')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (39)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (39)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, '39')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTENT)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTENT)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'CONTENT')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TYPE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TYPE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'TYPE')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (AUDIO)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (AUDIO)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'AUDIO')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MPE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MPE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'MPE')2014-01-05
+Added tsNeuron2014-01-05
+Returning frequency data2014-01-05
+>>> insertSymbol2014-01-05
+Inserting array of symbols2014-01-05
+Inserting array symbol ''2014-01-05
+Ignoring empty array symbol2014-01-05
+Inserting array symbol 'MPEG'2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+Inserting array symbol 'DISPOSITION'2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertSymbol (2)2014-01-05
+readParam (default_tsneuron_dominance is 100)2014-01-05
+readParam (tsneuron_reinforcement is 10)2014-01-05
+readParam (new_tsneuron_freq_weighting is 0.1)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PHP)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PHP)2014-01-05
+Ignoring existing tsNeuron (542,PHP)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ECHO)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ECHO)2014-01-05
+Ignoring existing tsNeuron (542,ECHO)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MP3)2014-01-05
+Freq is 4, weight param is 0.12014-01-05
+Setting dominance to 1032014-01-05
+setDominance (103)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MP3)2014-01-05
+Ignoring existing tsNeuron (542,MP3)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary ()2014-01-05
+Freq is 62, weight param is 0.12014-01-05
+Setting dominance to 1612014-01-05
+setDominance (161)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary ()2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (HEADER)2014-01-05
+Freq is 5, weight param is 0.12014-01-05
+Setting dominance to 1042014-01-05
+setDominance (104)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (HEADER)2014-01-05
+Ignoring existing tsNeuron (542,HEADER)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (39)2014-01-05
+Freq is 8, weight param is 0.12014-01-05
+Setting dominance to 1072014-01-05
+setDominance (107)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (39)2014-01-05
+Ignoring existing tsNeuron (542,39)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTENT)2014-01-05
+Freq is 4, weight param is 0.12014-01-05
+Setting dominance to 1032014-01-05
+setDominance (103)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTENT)2014-01-05
+Ignoring existing tsNeuron (542,CONTENT)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TYPE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TYPE)2014-01-05
+Ignoring existing tsNeuron (542,TYPE)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (AUDIO)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (AUDIO)2014-01-05
+Ignoring existing tsNeuron (542,AUDIO)2014-01-05
+<<< insertNeuron (0, '')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MPEG)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (MPEG)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'MPEG')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (DISPOSITION)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (DISPOSITION)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'DISPOSITION')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (FILENAME)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (FILENAME)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'FILENAME')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TEST)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TEST)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'TEST')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (LENGTH)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (LENGTH)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'LENGTH')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (FILESIZE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (FILESIZE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'FILESIZE')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PATH)2014-01-05
+Freq is 2, weight param is 0.12014-01-05
+Setting dominance to 1012014-01-05
+setDominance (101)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (PATH)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1012014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'PATH')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Freq is 2, weight param is 0.12014-01-05
+Setting dominance to 1012014-01-05
+setDominance (101)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (SPEAK)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1012014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'SPEAK')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CACHE)2014-01-05
+Freq is 2, weight param is 0.12014-01-05
+Setting dominance to 1012014-01-05
+setDominance (101)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CACHE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1012014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'CACHE')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTROL)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (CONTROL)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'CONTROL')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (NO)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (NO)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'NO')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TRANSFER)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (TRANSFER)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'TRANSFER')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ENCODING)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (ENCODING)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'ENCODING')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (BINARY)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (BINARY)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'BINARY')2014-01-05
+Added tsNeuron2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Freq is 1, weight param is 0.12014-01-05
+Setting dominance to 1002014-01-05
+setDominance (100)2014-01-05
+>>> insertNeuron , 2014-01-05
+_setPrimary (542)2014-01-05
+_setSecondary (READFILE)2014-01-05
+Symbol enabled: '1'2014-01-05
+Dominance set to 1002014-01-05
+setSpatiality (0)2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388873019)2014-01-05
+<<< insertNeuron (542, 'READFILE')2014-01-05
+Added tsNeuron2014-01-05
+<<< learnThought (542)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/home/pashkov/mind4cloud.com/www/opensource/rdbms'2014-01-05
+Loading config file '/home/pashkov/mind4cloud.com/www/opensource/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+>>> readThoughtFull (542)2014-01-05
+Caching recordset to /home/pashkov/mind4cloud.com/www/opensource/cache/2014-01-05
+setSummary (php echo mp3  header(&#39;Content-Type: audio/mpe)2014-01-05
+_setDetail2014-01-05
+>>> setInteracted (2014-01-05 02:03:38)2014-01-05
+<<< setInteracted (2014-01-05 02:03:38)2014-01-05
+setConfidence (50)2014-01-05
+setCertification (0)2014-01-05
+setCertifier ()2014-01-05
+setLearn (0)2014-01-05
+setReview (0)2014-01-05
+setDisplayRaw (FALSE)2014-01-05
+setDsType (LOCAL)2014-01-05
+setDsName ()2014-01-05
+setDatasource ()2014-01-05
+<<< readThoughtFull (542)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388874992)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (3)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 32014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '3'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 3 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '3'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '3'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 3'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (3)2014-01-05
+>>> answers (3)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '3'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 3 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875037)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (4)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 42014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '4'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 4 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '4'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '4'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 4'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (4)2014-01-05
+>>> answers (4)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '4'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 4 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875158)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (5)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 52014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '5'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 5 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '5'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '5'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 5'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (5)2014-01-05
+>>> answers (5)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '5'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 5 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875175)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (6)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 62014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '6'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 6 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '6'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '6'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 6'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (6)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875178)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (7)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 72014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '7'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 7 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '7'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '7'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 7'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (7)2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875200)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (8)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 82014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '8'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 8 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '8'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '8'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 8'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (8)2014-01-05
+>>> answers (8)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '8'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 8 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875296)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (9)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 92014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '9'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 9 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '9'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '9'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 9'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (9)2014-01-05
+>>> answers (9)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '9'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 9 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875303)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (10)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 102014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 10 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Executing ' delete from ThinkWork where query = 10'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (10)2014-01-05
+>>> answers (10)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 10 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875322)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (11)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 112014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 11 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Executing ' delete from ThinkWork where query = 11'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (11)2014-01-05
+>>> answers (11)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 11 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875325)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (12)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 122014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 12 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Executing ' delete from ThinkWork where query = 12'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (12)2014-01-05
+>>> answers (12)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 12 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875355)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (13)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 132014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 13 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Executing ' delete from ThinkWork where query = 13'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (13)2014-01-05
+>>> answers (13)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 13 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875474)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (15)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 152014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '15'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 15 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '15'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '15'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 15'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (15)2014-01-05
+>>> answers (15)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '15'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 15 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875571)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (16)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 162014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '16'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 16 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '16'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '16'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 16'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (16)2014-01-05
+>>> answers (16)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '16'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 16 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875622)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (17)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol ()2014-01-05
+<<< setSymbol ()2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+Attempt to insert empty stimulus2014-01-05
+<<< insertStimulus ()2014-01-05
+Error inserting stimulus ''2014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '17'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 17 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '17'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '17'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 17'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (17)2014-01-05
+>>> answers (17)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '17'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 17 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875637)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (18)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 182014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '18'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 18 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '18'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '18'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 18'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (18)2014-01-05
+>>> answers (18)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '18'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 18 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+<<< loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875667)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (19)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 192014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '19'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 19 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '19'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '19'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 19'2014-01-05
+Executing for multiple returns2014-01-05
+<<< getAction2014-01-05
+<<< ask (19)2014-01-05
+>>> answers (19)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '19'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 19 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< getAction2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875690)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (20)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 202014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '20'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 20 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '20'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '20'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 20'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (20)2014-01-05
+>>> answers (20)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '20'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 20 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875743)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (21)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 212014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '21'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength) select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance) from Stimulus, Symbol, TsNeuron where Stimulus.stimulus LIKE Symbol.symbol and TsNeuron.symbol LIKE  Symbol.symbol and TsNeuron.enabled != 0 and Stimulus.query = 21 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '21'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength) select query, thought, sum(strength) from ThinkWork group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '21'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 21'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (21)2014-01-05
+>>> answers (21)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = %QUERYID% and Decision.thought = Thought.thoughtid and Thought.status like '%STATUS%' order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '21'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status , Thought.user , Thought.rand , Thought.ismeta from Thought, Decision where Decision.query = 21 and Decision.thought = Thought.thoughtid and Thought.status like 'ACTIVE' order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875801)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (22)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 222014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '22'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 22 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '22'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '22'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 22'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (22)2014-01-05
+>>> answers (22)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '22'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 22
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875830)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (23)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 232014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '23'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 23 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '23'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '23'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 23'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (23)2014-01-05
+>>> answers (23)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '23'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 23
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875865)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (24)2014-01-05
+Using cached SQL Actions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 242014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '24'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 24 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '24'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '24'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 24'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (24)2014-01-05
+>>> answers (24)2014-01-05
+readParam (max_results_returned is )2014-01-05
+>>> getAction (fetch answers)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '24'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 24
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875884)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (25)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 252014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '25'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 25 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '25'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '25'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 25'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (25)2014-01-05
+>>> answers (25)2014-01-05
+readParam (max_results_returned is )2014-01-05
+>>> getAction (fetch answers)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '25'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 25
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875905)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (26)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 262014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '26'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 26 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '26'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '26'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 26'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (26)2014-01-05
+>>> answers (26)2014-01-05
+readParam (max_results_returned is )2014-01-05
+>>> getAction (fetch answers)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '26'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 26
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Unable to load fundamental parameters2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875922)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (27)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 272014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '27'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 27 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '27'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '27'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 27'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (27)2014-01-05
+>>> answers (27)2014-01-05
+readParam (max_results_returned is )2014-01-05
+>>> getAction (fetch answers)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '27'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 27
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875929)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (28)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 282014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '28'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 28 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '28'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '28'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 28'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (28)2014-01-05
+>>> answers (28)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '28'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 28
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875944)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (29)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 292014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '29'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 29 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '29'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '29'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 29'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (29)2014-01-05
+>>> answers (29)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '29'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 29
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875961)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (30)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 302014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '30'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 30 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '30'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '30'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 30'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (30)2014-01-05
+>>> answers (30)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '30'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 30
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
+Loading SQL Actions2014-01-05
+>>> loadActions2014-01-05
+Loading actions path '/var/www/protocol_engine/rdbms'2014-01-05
+Loading config file '/var/www/protocol_engine/rdbms/mysql.xml'2014-01-05
+<<< loadActions2014-01-05
+Loading fundamentals2014-01-05
+>>> loadFundamentals2014-01-05
+Calling plugins manager2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> ask2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+setQueryText2014-01-05
+>>> insertQuery2014-01-05
+>>> setInteracted ()2014-01-05
+<<< setInteracted (1388875995)2014-01-05
+Transaction comitted2014-01-05
+<<< insertQuery (31)2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+Returning linear data2014-01-05
+Using cached SQL Actions2014-01-05
+Using cached fundamentals2014-01-05
+Using cached plugins2014-01-05
+>>> setSymbol (SERVER)2014-01-05
+<<< setSymbol (SERVER)2014-01-05
+_setQuery2014-01-05
+>>> insertStimulus2014-01-05
+<<< insertStimulus (SERVER)2014-01-05
+Added stimulus 'SERVER' to query 312014-01-05
+>>> getAction (think)2014-01-05
+Action 'think'2014-01-05
+Raw action is ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = %QUERYID% group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Replaced '%QUERYID%' with '31'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into ThinkWork (query, thought, symbol, strength)
+				select Stimulus.query, TsNeuron.thought, TsNeuron.symbol, sum(TsNeuron.dominance)
+				from Stimulus, Symbol, TsNeuron
+				where Stimulus.stimulus = Symbol.symbol
+				and TsNeuron.symbol = Symbol.symbol
+				and TsNeuron.enabled != 0
+				and Stimulus.query = 31 group by Stimulus.query, TsNeuron.thought, TsNeuron.symbol'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Replaced '%QUERYID%' with '31'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' insert into Decision (query,thought,strength)
+			       select query, thought, sum(strength) from ThinkWork
+				group by query, thought'2014-01-05
+Executing for multiple returns2014-01-05
+Raw action is ' delete from ThinkWork where query = %QUERYID%'2014-01-05
+Replaced '%QUERYID%' with '31'2014-01-05
+Replaced '%THOUGHTSTATUS%' with 'ACTIVE'2014-01-05
+Executing ' delete from ThinkWork where query = 31'2014-01-05
+Executing for multiple returns2014-01-05
+<<< ask (31)2014-01-05
+>>> answers (31)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+>>> getAction (fetch answers)2014-01-05
+readParam (max_results_returned is 20)2014-01-05
+Action 'fetch answers'2014-01-05
+Raw action is ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = %QUERYID%
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like '%STATUS%'
+			 order by Decision.strength desc'2014-01-05
+Replaced '%QUERYID%' with '31'2014-01-05
+Replaced '%STATUS%' with 'ACTIVE'2014-01-05
+Executing ' select Thought.thoughtid, Thought.summary, Decision.strength, Thought.status 
+			  from Thought, Decision
+			 where Decision.query = 31
+			   and Decision.thought = Thought.thoughtid
+                           and Thought.status like 'ACTIVE'
+			 order by Decision.strength desc'2014-01-05
+Executing for single return2014-01-05
+Select limit is 202014-01-05
+<<< answers2014-01-05
