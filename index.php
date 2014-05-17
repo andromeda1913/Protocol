@@ -1,14 +1,16 @@
 <?php
+ 
+ ini_set("display_errors","1");  
+ error_reporting(E_ALL);  
+ //   
 
- 
-   include "Bootstrap.php"  ;  
+ include "Bootstrap.php"  ;  
    $boot =  new Bootstrap() ;  
- 
- 
- 
- 
+  
 if (isset ( $_POST ["req"] ))  
-	echo  array_shift($boot->ask( $_POST ["req"]  )) ;  
+ $answer = 	$boot->ask( $_POST ["req"]  )  ;  
+
+	echo  "Answer :  ". array_shift($answer) ;  
 
  
 if (isset ( $_POST ["learn"] )) {

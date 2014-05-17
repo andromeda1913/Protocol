@@ -1065,7 +1065,7 @@ class mmEvent {
 		$this->descr = $descr;
 		if (isset ( $userId ))
 			$this->userId = $userId;
-		
+	
 		$this->add ();
 	}
 }

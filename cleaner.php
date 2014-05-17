@@ -1,6 +1,8 @@
 <?php 
   
 session_start() ;
+	ini_set("display_errors",1); 
+	error_reporting(E_ALL) ; 
 	
  
 	include_once './defines.php';
@@ -14,3 +16,5 @@ session_start() ;
 	 $mm = $mm->pluginMgr->executePlugins( 'dream', $mm );
 	 $event->dream( 'stop dream', $dreamInfo );
  
+	 echo  "CLEAN  completed  " ; 
+	 

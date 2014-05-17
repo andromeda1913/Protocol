@@ -13,7 +13,8 @@ class p50_dream_resolveQueries extends plugin {
 		
 		// Connect to the database and execute the query
 		$dbconn = $dream->dbconn;
-		
+		$dbconn->Query("UPDATE flow SET position=0 , open=0"); 
+		 
 		// These status queries must execute in the specified order
 		
 		// Set queries containing "unsure" decisions to "open pending"

@@ -26,17 +26,14 @@ class Extract implements commandInterface {
 			if (strstr ( $this->input, "extract:" )) {
 				$ex = explode ( "extract:", $this->input );
 				$map = new Map ();
-				
 				$query = $this->dbo->query ( "SELECT queryId FROM Query ORDER BY queryId DESC LIMIT 1  " );
 				$last_query_id = $query->fields ["queryId"] - 1;
 				$mind = new mind ();
 				$resl = array_shift ( $mind->answers ( $last_query_id, "ACTIVE", TRUE, FALSE, FALSE ) );
-				// REinforce map
 				if ($resl ["map_id"]) {
 					$map->setSelectionForMap ( $resl ["map_id"], $ex [1] );
-				}
-				
-				$this->raw = "Extracted.";
+				} 
+			 	$this->raw = "Extracted.";
 				$this->out = false;
 			}
 		}

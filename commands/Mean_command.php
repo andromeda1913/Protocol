@@ -19,10 +19,20 @@ class Mean implements commandInterface {
 			if (count ( $string ) == 3) {
 				$word = new Word ( $string [0] );
 				if ($word->id) {
+					
+					
 					$syn = trim ( mb_strtolower ( $string [2] ) );
 					if (! $word->is ( $syn )) {
+						
+						 
 						$word->addSynonim ( $syn );
-						$this->raw = "Synonim was Added";
+						$this->raw =  $word->id . "  Synonim  was Added ". $syn;  
+						
+						
+						echo $this->raw; 
+						
+						
+						
 					} else
 						$this->raw = $word->word . "  already has that meaning";
 				}

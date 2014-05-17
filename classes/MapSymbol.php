@@ -15,14 +15,14 @@ class MapSymbol extends _Abstract {
 	private $map;
 	private $strength = 0.0;
 	private $iterator = 0;
-	public function __construct($word_id = null, $to_word = null, $map = NULL) {
+	public function __construct($word_id = null, $to_word = null, $map = NULL , $multiplier =  1) {
 		parent::__construct ();
 		$this->table = "map_points";
 		$this->word_id = $word_id;
 		$this->to_word = $to_word;
 		$this->map = $map;
 		// random
-		$this->strength = rand ( 0, 10 ) / 10;
+		$this->strength =  $multiplier;
 	}
 	public function createPoint() {
 		return $this->generalInsert ( [ 

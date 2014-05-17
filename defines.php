@@ -40,7 +40,7 @@ define("LOG",   0 );
 
 require_once( $MM_GLOBALS['home'] . 'include/utilities.inc' );
 require_once( $MM_GLOBALS['home'] . 'include/mind.inc.php' );
-require_once( $MM_GLOBALS['home'] . 'classes/FlowManager.php' );  
+ 
 
 /* * 								  
  * Load Commands From  Command Folder   

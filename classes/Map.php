@@ -47,6 +47,7 @@ class Map extends _Abstract {
 	public function createMap() {
 		if (count ( $this->word_string ) == 0)
 			throw new \Exception ( "Empty input" );
+	 
 		
 		$this->id = $this->generalInsert ( [ 
 				"date" => time (),
@@ -58,13 +59,19 @@ class Map extends _Abstract {
 		
 		// insert symbols
 		$symbols = [ ];
+		$multi  = 1; 
+		
 		foreach ( $this->word_string as $p => $word ) {
 			$to = null;
 			if (isset ( $this->word_string [$p + 1] ))
 				$to = $this->word_string [$p + 1]->id;
-			$s = new MapSymbol ( $word->id, $to, $this->id );
+			$s = new MapSymbol ( $word->id, $to, $this->id , $multi);
 			$s->createPoint ();
+			$multi ++  ;  
 		}
+		
+		
+		
 		return $this->id;
 	}
 	// Teach Map For Select Specified Words from String
@@ -98,10 +105,15 @@ class Map extends _Abstract {
 		return array_merge ( $array, $newArray );
 	}
 	
-	/*
-	 * Extract Data using Specified Map Id pashkovdenis@gmail.com 2014
-	 */
+	
+/*__________________
+ * Extract   
+ * From Map  String :  
+ * __________________
+ * 
+ */
 	public function extract($string, $mapid) {
+		
 		if ($mapid == 0 || empty ( $mapid ))
 			return $string;
 		
@@ -115,24 +127,27 @@ class Map extends _Abstract {
 		$count = count ( $words );
 		$extracted = [ ];
 		$maps = $this->setSql ( "SELECT * FROM maps  WHERE  id = '{$mapid}' ORDER by length DESC  " )->loadList ();
+ 		foreach ( $maps as $map ) {
+			$learned = $this->setSql ( "SELECT * FROM map_points WHERE learn = 1 AND  map='{$map->id}' ORDER BY strength   DESC  " )->loadList ();
 		
-		foreach ( $maps as $map ) {
-			$learned = $this->setSql ( "SELECT * FROM map_points WHERE learn = 1 AND  map='{$map->id}' ORDER BY id DESC  " )->loadList ();
-			
+			  
 			foreach ( $learned as $l ) {
 				$ex = [ ];
-				$points = 0;
+				$points = 0; 
+ 				
 				foreach ( $word_object as $i => $word ) {
+					  
+					 
 					if ($word->is2 ( $l->word )) {
-						
-						$ex [] = $words [$i];
+			    		$ex [] = $words [$i];
 						$points += $l->strength;
 						$total += $points + $i;
 					}
 				}
-				
-				$extracted ["" . $points . rand ( 0, 9 )] = $ex;
-			}
+				$extracted [ ] = $ex;
+			}	
+  
+		 	 
 			
 			$total = 0;
 			$t = [ ];
@@ -141,8 +156,15 @@ class Map extends _Abstract {
 				$t [] = array_shift ( $word );
 			}
 			
+	 
+			
 			$result [$total] = $t;
 		}
+		
+		
+		
+	 
+		
 		arsort ( $result, SORT_ASC );
 		$esc = strlen ( $string ) / 100 * $total;
 		
@@ -162,4 +184,43 @@ class Map extends _Abstract {
 		
 		return $result;
 	}
+	
+		 
+	
+	
+	 /*
+	  * Static MEthods THat   Will REturn   MAps :   
+	  * Generalized Maps : 
+	  * pashkovdenis@gmail.com   
+	  *   
+	  */  
+	
+	public static function  getGeneralMaps($string){
+ 		$maps  = [] ; 
+		$words_ids = [];   
+		$len =  strlen($string);   		
+ 		$string =  trim(mb_strtolower($string));  
+		$words_strings =  explode(" ",  $string);     
+		$min =  (int)  ((count($words_strings)/100) * 50)  ;  
+ 		$maps_count =  (new self())->setSql("SELECT FLOOR(AVG(length)) as c  FROM  maps ORDER BY length DESC     ")->load()->c; 
+  	 	$min= $maps_count/2; 
+  		foreach($words_strings as $sw)   
+			 $words_ids[] =   (new Word($sw))->id ;   
+			if  (count($words_ids)){
+			 $sql =  "SELECT *  FROM maps as m LEFT JOIN  map_points as mp on mp.map =  m.id  WHERE mp.word IN (".join(",",$words_ids).")    GROUP BY mp.map  having COUNT(mp.id) > {$min}   ORDER BY m.select_length ASC               "; 
+	
+			 $maps2 = (new self())->setSql($sql)->loadList() ;  
+ 	   	 	foreach ($maps2 as $M) 
+		 		$maps[] =  $M->map; 
+		 }
+		return $maps ; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

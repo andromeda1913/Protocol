@@ -55,9 +55,21 @@ class Word extends _Abstract {
 			$word = str_replace ( $s, "", $word );
 		}
 		$this->word = $word;
-		$w = $this->setSql ( " SELECT id FROM words WHERE LOWER(word) LIKE LOWER('{$word}') OR (LOWER(synonims) LIKE LOWER('%,{$word},%')  )    " )->load ();
-		if (isset ( $w->id ))
+		
+		
+		$w = $this->setSql ( " SELECT id FROM words WHERE LOWER(word) LIKE LOWER('{$word}')     ORDER BY id DESC      " )->load ();
+ 		if (isset ( $w->id ))
 			$this->id = $w->id;
+ 		
+ 		
+ 		//  Try to find  in  Synonimns :   
+ 		if (!$this->id){
+ 			$w = $this->setSql ( " SELECT id FROM words WHERE  LOWER(synonims) LIKE LOWER('%,{$word},%')   ORDER BY id DESC      " )->load ();
+ 			if (isset ( $w->id ))
+ 				$this->id = $w->id;
+ 		 }
+		 	
+		
 		if (! $this->id)
 			$this->id = $this->generalInsert ( [ 
 					"word" => $this->word,
@@ -88,7 +100,7 @@ class Word extends _Abstract {
 	}
 	
 	public function is2($id) {
-		$word = $this->setSql ( "SELECT * from words WHERE id='{$id}' " )->load ();  
+		$word = $this->setSql ( "SELECT * FROM  words WHERE id='{$id}'  " )->load ();  
 	 
 		similar_text(trim(mb_strtolower($word->word)), trim(mb_strtolower($this->word)), $m);  
 		
@@ -99,6 +111,8 @@ class Word extends _Abstract {
 		
 		$syns = explode ( ",", $word->synonims );
 		foreach ( $syns as $s ) {
+		 
+			
 			if ($s != "") {
 				if (in_array ( $s, $this->synonims )) {
 					return true;

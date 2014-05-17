@@ -18,13 +18,14 @@ class mind extends _brainobject {
 	public static $MODE_FAQ = 1;
 	public static $MODE_DIALOG = 2;
 	public $variant = false;
+	private $current_flow = null;
+	private $flow = null;
 	
-	// Constructor :
-	function mind() {
+	// Construct :
+	public function __construct() {
 		_brainObject::_brainObject ();
-		$this->flowManager = new FlowManager ( $this->dbconn );
+		$this->flowManager = null;
 	}
-	// Set Variant Mode
 	public function setVariant($v = false) {
 		$this->variant = $v;
 		return $this;
@@ -81,7 +82,7 @@ class mind extends _brainobject {
 			$addedNeuron = $neuron->insertNeuron ();
 			$this->logMsg ( "Added tsNeuron", MM_INFO );
 		}
-		
+		$this->current_flow->attachThought ( $thoughtId );
 		$this->logMsg ( sprintf ( "<<< learnThought (%s)", $thoughtId ), MM_ALL );
 		return $thoughtId;
 	}
@@ -167,8 +168,10 @@ class mind extends _brainobject {
 			
 			// Create Map For It :
 		$map_id = (new Map ())->setString ( $detail )->createMap ();
-		$this->dbconn->query ( "UPDATE Thought SET map_id='{$map_id}' WHERE  thoughtId='{$thoughtId}'    " );
 		
+		// $this->current_flow->attachThought($thoughtId);
+		$this->dbconn->query ( "UPDATE Thought SET map_id='{$map_id}' WHERE  thoughtId='{$thoughtId}'    " );
+		$this->dbconn->query ( "UPDATE Thought SET flow_id='{$this->current_flow->id}' ,position='{$this->current_flow->position}' WHERE  thoughtId='{$thoughtId}'    " );
 		return $thoughtId;
 	}
 	function updateLearnedThought($thoughtId, $summary, $detail) {
@@ -380,9 +383,9 @@ class mind extends _brainobject {
 		
 		$this->logMsg ( sprintf ( "<<< reinforceMemory (%s)", $returnCode ), MM_ALL );
 		return $returnCode;
-	} 
+	}
 	
-	//  Some Data   
+	// Some Data
 	public function getCommandsReposne() {
 		global $MM_GLOBALS;
 		$str = "";
@@ -447,9 +450,9 @@ class mind extends _brainobject {
 						$this->logMsg ( sprintf ( "Added stimulus '%s' to query %s", $addedStimulus, $queryId ), MM_INFO );
 					}
 				}
-				  
+				
 				$dbConn = $this->dbconn;
-			 	$attrib = array (
+				$attrib = array (
 						'%QUERYID%' => $queryId,
 						'%THOUGHTSTATUS%' => $status 
 				);
@@ -463,8 +466,7 @@ class mind extends _brainobject {
 	}
 	
 	/*
-	 * Get Answers From System pashkovdenis@gmail.com 2014  
-	 *  
+	 * Get Answers From System pashkovdenis@gmail.com 2014
 	 */
 	function answers($queryId = NULL, $status = 'ACTIVE', $cache = TRUE, $forceUpdate = FALSE, $COMMANDS = TRUE) {
 		global $MM_GLOBALS;
@@ -503,14 +505,32 @@ class mind extends _brainobject {
 					$summary = $c->execute ( $thoughtId );
 				}
 			}
+			 
 			
-			$map = new Map ();
-			$map->id = $map_id;
-			if (! empty ( $map_id )) {
-				$ex = array_shift($map->extract ( $detail, $map_id ));
- 				 if (count ( $ex ) > 0) 
-				  	$detail = join ( " ", $ex ); 
-			 }
+			
+			
+			// Get List of  maps  for  extracting : 
+			$maps =  Map::getGeneralMaps($detail);  
+			
+ 		 	if (count($maps)){
+
+		 		foreach($maps as $mid){
+		 	  
+		 		 $map =  new Map(); 
+		 		 $map ->id =   $mid ;   
+		 		 $ar = $map->extract ( $detail, $mid );
+		 		 $ex = array_shift ( $ar );
+		 		 
+		 		 if (count ( $ex ) > 0)
+		 		 	$detail = join ( " ", $ex );
+		 		
+		 		}
+		 		
+		 	}
+			
+		 	
+		  
+		 	 
 			
 			$answers [$record] = array (
 					$thoughtId,
@@ -518,14 +538,12 @@ class mind extends _brainobject {
 					$strength,
 					$status,
 					$detail,
-					$recordSet->fields [5] ,  
-					"map_id" =>  $map_id  , 
+					$recordSet->fields [5],
+					"map_id" => $map_id 
 			);
 			$record ++;
 			$recordSet->MoveNext ();
 		}
-		
-		$this->logMsg ( "<<< answers", MM_ALL );
 		
 		return $answers;
 	}
@@ -558,7 +576,6 @@ class mind extends _brainobject {
 		// Fetch the symbols and the neurons, if they exist, then build or reinforce
 		// as necessary.
 		$sql = "SELECT Symbol.symbol FROM Symbol, TsNeuron " . "WHERE Thought = $thoughtId AND Symbol.symbol = TsNeuron.Symbol " . "ORDER BY Symbol.symbol";
-		print "FETCHING   ";
 		
 		$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
 		$result = $dbconn->Execute ( $sql );
