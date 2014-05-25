@@ -81,10 +81,7 @@ class Map extends _Abstract {
 		$c = count ( $words );
 		
 		if ($c) {
-			$this->updateBypost ( [ 
-					"id" => $map_id,
-					"select_length" => $c 
-			] );
+		 
 			$mapS = new MapSymbol ();
 			foreach ( $words as $index => $w )
 				$mapS->learn ( new Word ( $w ), $map_id );

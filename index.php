@@ -10,7 +10,8 @@
 if (isset ( $_POST ["req"] ))  
  $answer = 	$boot->ask( $_POST ["req"]  )  ;  
 
-	echo  "Answer :  ". array_shift($answer) ;  
+ foreach($answer as $an) 
+echo  "<p>" .  $an . "</p>"  ; 
 
  
 if (isset ( $_POST ["learn"] )) {

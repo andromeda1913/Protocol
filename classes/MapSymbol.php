@@ -37,7 +37,7 @@ class MapSymbol extends _Abstract {
 	public function learn($word, $map) {
 		$point = $this->setSql ( "SELECT * FROM map_points WHERE map='{$map}' AND word = '{$word->id}' " )->load ();
 		if (isset ( $point->id ))
-			$this->setSql ( "UPDATE map_points SET strength = '" . ($point->strength + (($this->iterator / 10) * strlen ( $word->word ))) . "' , learn=1  WHERE id = '{$point->id}'  " )->exec ();
+			$this->setSql ( "UPDATE map_points SET strength=strength+0.5 , learn=1  WHERE id = '{$point->id}'  " )->exec ();
 		
 		$this->iterator ++;
 	}

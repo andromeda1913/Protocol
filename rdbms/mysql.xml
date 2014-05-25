@@ -341,7 +341,7 @@
 			 where Decision.query = %QUERYID%
 			   and Decision.thought = Thought.thoughtid
                            and Thought.status like '%STATUS%'
-			 order by   Decision.strength desc , Thought.position desc
+			 order by   Decision.strength desc , Thought.position asc
 		</sql>
 	</action>
 
